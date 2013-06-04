@@ -45,11 +45,11 @@ public:
     void addNeighboor(D_Node* node, uint distance);
     
     // @retourne un iterator contenant tout les voisins de la node.
-    std::vector<D_Node*>::iterator neighboors();
+    const std::vector<D_Node*>& neighboors();
     
     // @retourne la distance de la node relative.
     // @note: si la node est inconnue, retourne 0.
-    int distanceForNode(D_Node& node);
+    int distanceForNode(const D_Node* node);
     
     void description();
     
@@ -68,7 +68,7 @@ public:
     
 private:
     std::map<D_Node*, int> neighboorDistance;
-    std::vector<D_Node*> neighboor;
+    std::vector<D_Node*> neighboor; // list plutôt
     
     void addNode(D_Node* node, uint distance);
 };

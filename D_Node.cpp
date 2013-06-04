@@ -16,8 +16,13 @@ void D_Node::addNeighboor(D_Node* node, uint distance){
     node->addNode(this, distance);
 }
 
-std::vector<D_Node*>::iterator D_Node::neighboors(){
-    return neighboor.begin();
+const std::vector<D_Node*>& D_Node::neighboors(){
+    return neighboor;
+}
+
+int D_Node::distanceForNode(const D_Node* node){
+    auto it     = neighboorDistance.find(const_cast<D_Node*>(node));
+    return it != neighboorDistance.end() ? it->second : 0;
 }
 
 void D_Node::description(){
