@@ -10,33 +10,44 @@
 #include "D_Node.h"
 #include <list>
 
-
 class DijkstraImpl{
 public:
     DijkstraImpl();
-
 private:
-    
 };
 
 using namespace std;
 
 // helper
+// a supprimer
+static vector<D_Node*> listNode;
+void testFalseNode();
+
+// l'algorythme de Dijkstra.
+void findPath(vector<D_Node*> allNodes);
+
+// permet de classer les nodes par leur distances.
+bool sortNodeByDistance(D_Node* node_a, D_Node* node_b);
+
+// affiche la description de toutes les nodes.
 void printAllNodes(vector<D_Node*> &listNodes);
 
 #pragma mark -------------------------- public ---------------------------------
 #pragma mark -------------------------------------------------------------------
 
-static vector<D_Node*> listNode;
-void testFalseNode();
-void findPath(vector<D_Node*> allNodes);
-bool sortNodeByDistance(D_Node* node_a, D_Node* node_b);
+#pragma mark - public
+
+void Dijkstra::pathFind(vector<D_Node*> feeds){
+    findPath(feeds);
+}
+
+#pragma mark - alloc / dealloc
 
 Dijkstra::Dijkstra(){
     m_impl = new DijkstraImpl();
     testFalseNode();
-    findPath(listNode);
 }
+
 
 Dijkstra::~Dijkstra(){
     delete m_impl;
@@ -80,7 +91,6 @@ void findPath(vector<D_Node*> allNodes){
         notVisited.erase(notVisited.begin());
     }
 
-    printf("\n -- \n");
     printAllNodes(allNodes);
 }
 
@@ -114,7 +124,6 @@ void testFalseNode(){
     listNode.push_back(node_4);
     listNode.push_back(node_5);
     listNode.push_back(node_6);
-
 }
 
 void printAllNodes(vector<D_Node*> &listNodes){

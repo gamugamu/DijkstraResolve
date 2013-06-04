@@ -10,13 +10,19 @@
 #define __TestinC____PathFinder__
 
 #include <iostream>
+#include <vector>
+#include "D_2DMConverter.h"
 
 class DijkstraImpl;
+class D_Node;
 
 class Dijkstra{
 public:
     Dijkstra();
     ~Dijkstra();
+    
+    void pathFind(std::vector<D_Node*> feeds);
+
 private:
     DijkstraImpl* m_impl;
 };
