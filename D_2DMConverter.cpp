@@ -10,9 +10,16 @@
 #include "D_Node.h"
 #include <algorithm>
 
-std::vector<D_Node*> create2DMatriceToDijkstra(int* matrice2D, int n, int m){
-    std::vector<D_Node*> nodes;
-    
+// helper
+void release2DMatriceToDijkstra(std::vector<D_Node*>& nodes);
+
+#pragma mark -------------------------- public ---------------------------------
+#pragma mark -------------------------------------------------------------------
+
+std::vector<D_Node*> D_2MConverter::make2DMatriceToDijkstra(int* matrice2D, int n, int m){
+    // on efface précédemment les nodes qui ont pu être créées.
+    release2DMatriceToDijkstra(nodes);
+
     // création des nodes avec leurs id respectifs.
     for(int i = 0; i < n; i++)
         for(int j = 0; j < m; j++)
@@ -50,13 +57,27 @@ std::vector<D_Node*> create2DMatriceToDijkstra(int* matrice2D, int n, int m){
     return nodes;
 }
 
-bool isMarkedToDelete(const D_Node* o){
+#pragma mark - alloc / dealloc
+
+D_2MConverter::D_2MConverter(){
+
+}
+
+D_2MConverter::~D_2MConverter(){
+    release2DMatriceToDijkstra(nodes);
+}
+
+#pragma mark -------------------------- private --------------------------------
+#pragma mark -------------------------------------------------------------------
+
+#pragma mark - memory managment
+
+bool deleteNode(const D_Node* o){
     delete o;
     return true;
 }
 
-void release2DMatriceToDijkstra(std::vector<D_Node*> nodes){
-    nodes.erase(
-                std::remove_if(nodes.begin(), nodes.end(), isMarkedToDelete),
+void release2DMatriceToDijkstra(std::vector<D_Node*>& nodes){
+    nodes.erase(std::remove_if(nodes.begin(), nodes.end(), deleteNode),
                 nodes.end());
 }

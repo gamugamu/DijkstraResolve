@@ -44,7 +44,6 @@ D_Node::D_Node(uint idNode) : id(idNode){
 };
 
 D_Node::~D_Node(){
-    std::cout << "xxx";
 }
 
 #pragma mark -------------------------- private --------------------------------
