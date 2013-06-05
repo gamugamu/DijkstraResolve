@@ -8,6 +8,7 @@
 
 #include "D_2DMConverter.h"
 #include "D_Node.h"
+#include <algorithm>
 
 std::vector<D_Node*> create2DMatriceToDijkstra(int* matrice2D, int n, int m){
     std::vector<D_Node*> nodes;
@@ -49,6 +50,13 @@ std::vector<D_Node*> create2DMatriceToDijkstra(int* matrice2D, int n, int m){
     return nodes;
 }
 
-void release2DMatriceToDijkstra(std::vector<D_Node*>& nodes){
-    
+bool isMarkedToDelete(const D_Node* o){
+    delete o;
+    return true;
+}
+
+void release2DMatriceToDijkstra(std::vector<D_Node*> nodes){
+    nodes.erase(
+                std::remove_if(nodes.begin(), nodes.end(), isMarkedToDelete),
+                nodes.end());
 }

@@ -12,7 +12,6 @@
 #pragma mark -------------------------------------------------------------------
 
 void D_Node::addNeighboor(D_Node* node, uint distance_A, uint distance_B){
-    return;
     this->addNode(node, distance_A);
     node->addNode(this, distance_B);
 }
