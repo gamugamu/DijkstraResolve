@@ -12,9 +12,9 @@
 #include <iostream>
 #include <vector>
 #include "D_2DMConverter.h"
+#include "D_Node.h"
 
 class DijkstraImpl;
-class D_Node;
 
 // affiche la description de toutes les nodes.
 void printAllNodes(std::vector<D_Node*> &listNodes);
