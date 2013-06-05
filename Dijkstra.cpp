@@ -10,12 +10,6 @@
 #include "D_Node.h"
 #include <list>
 
-class DijkstraImpl{
-public:
-    DijkstraImpl();
-private:
-};
-
 using namespace std;
 
 // helper
@@ -51,27 +45,29 @@ void findPath(vector<D_Node*>& allNodes, D_Node* startNode){
         // on retrouve la node la plus proche.
         sort(notVisited.begin(), notVisited.end(), sortNodeByDistance);
       
-
         D_Node* unvisited = notVisited[0];
 
-        auto n = unvisited->neighboors();
-
-        // on parcours les voisins de la node , et on réfraichit les distances.
-        for(auto it = n.begin(); it != n.end(); it++){
-            D_Node* node = *it;
+        // on exclue toutes les nodes qui ne veulent pas être visitée.
+        if(!unvisited->cantVisit){
+            auto n = unvisited->neighboors();
             
-            // note, dans l'algorythme de Diskstra, on ne réupdate pas les
-            // nodes visitées.
-            if(!node->didVisit){
-                int weight      = unvisited->weight + unvisited->distanceForNode(node);
+            // on parcours les voisins de la node , et on réfraichit les distances.
+            for(auto it = n.begin(); it != n.end(); it++){
+                D_Node* node = *it;
                 
-                if(weight < node->weight)
-                    node->weight = weight;
+                // note, dans l'algorythme de Diskstra, on ne réupdate pas les
+                // nodes visitées, ni celle qui ne veulent pas être visité.
+                if(!node->cantVisit && !node->didVisit){
+                    int weight = unvisited->weight + unvisited->distanceForNode(node);
+                    
+                    if(weight < node->weight)
+                        node->weight = weight;
+                }
             }
+            // la node a été visitée.
+            unvisited->didVisit = true;
         }
-        
         // on enlève unvisited de la list
-        unvisited->didVisit = true;
         notVisited.erase(notVisited.begin());
     }
 

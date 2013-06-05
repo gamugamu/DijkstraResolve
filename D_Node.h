@@ -29,11 +29,9 @@ public:
     /*-------------------------------------------------------
                     constructeur / Destructeur
      -------------------------------------------------------*/
-    D_Node();
-    ~D_Node();
-
     // constructeur avec id pour la node.
     D_Node(uint idNode);
+    ~D_Node();
     
     /*-------------------------------------------------------
                             method
@@ -66,10 +64,13 @@ public:
     // la distance la plus courte relative à la node de départ.
     uint weight = INF;
     
-    // permet à l'algo de Djikstra de ssavoir si cette node a déjà été
+    // permet à l'algo de Dijkstra de ssavoir si cette node a déjà été
     // visitée.
     bool didVisit;
     
+    // si cette variable est à true, Dijkstra ne le visitera pas.
+    bool cantVisit;
+
 private:
     std::map<D_Node*, int> neighboorDistance;
     std::vector<D_Node*> neighboor; // list plutôt
