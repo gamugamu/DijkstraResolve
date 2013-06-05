@@ -15,7 +15,6 @@
 // Dijkstra Matrice 2D converter
 class D_Node;
 
-std::vector<D_Node*> convert2DMatriceToDijkstra(int* matrice2D, int n, int m);
-
+std::vector<D_Node*> create2DMatriceToDijkstra(int* matrice2D, int n, int m);
 
 #endif /* defined(__TestinC____D_2DMConverter__) */

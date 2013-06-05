@@ -33,16 +33,20 @@ public:
     ~D_Node();
 
     // constructeur avec id pour la node.
-    D_Node(uint idNode) : id(idNode){};
-
+    D_Node(uint idNode);
+    
     /*-------------------------------------------------------
                             method
      -------------------------------------------------------*/
     
     // rajoute un voisin:
     // @params node: la node à rajouter
-    // @params distance: la distance relative entre ces 2 nodes.
-    void addNeighboor(D_Node* node, uint distance);
+    // @params distance_A: la distance du point A vers point B.
+    // @params distance_B: la distance du point B vers point A.
+    // @note: les distances peuvent ne pas êtres équivalentes.
+    // Example: monter une montagne et la descendre. On parle alors
+    // de poids.
+    void addNeighboor(D_Node* node, uint distance_A, uint distance_B);
     
     // @retourne un iterator contenant tout les voisins de la node.
     const std::vector<D_Node*>& neighboors();
