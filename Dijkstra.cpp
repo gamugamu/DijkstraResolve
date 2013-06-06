@@ -33,6 +33,10 @@ void Dijkstra::pathFind(vector<D_Node*>& feeds, D_Node* startNode){
 #pragma mark - alloc / dealloc
 
 void findPath(vector<D_Node*>& allNodes, D_Node* startNode){
+    for(D_Node* node : allNodes){
+        node->weight    = INF;
+        node->didVisit  = false;
+    }
     // on la marque comme visitée.
     startNode->weight   = 0;
     startNode->didVisit = true;
