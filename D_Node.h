@@ -30,7 +30,7 @@ public:
                     constructeur / Destructeur
      -------------------------------------------------------*/
     // constructeur avec id pour la node.
-    D_Node(uint idNode);
+    D_Node(unsigned int idNode);
     ~D_Node();
     
     /*-------------------------------------------------------
@@ -44,7 +44,7 @@ public:
     // @note: les distances peuvent ne pas êtres équivalentes.
     // Example: monter une montagne et la descendre. On parle alors
     // de poids.
-    void addNeighboor(D_Node* node, uint distance_A, uint distance_B);
+    void addNeighboor(D_Node* node, unsigned int distance_A, unsigned int distance_B);
     
     // @retourne un iterator contenant tout les voisins de la node.
     const std::vector<D_Node*>& neighboors();
@@ -59,10 +59,10 @@ public:
                           propriétés:
      -------------------------------------------------------*/
     // l'id de la node.
-    uint id;
+    unsigned int id;
     
     // la distance la plus courte relative à la node de départ.
-    uint weight = INF;
+    unsigned int weight = INF;
     
     // permet à l'algo de Dijkstra de ssavoir si cette node a déjà été
     // visitée.
@@ -75,7 +75,7 @@ private:
     std::map<D_Node*, int> neighboorDistance;
     std::vector<D_Node*> neighboor; // list plutôt
     
-    void addNode(D_Node* node, uint distance);
+    void addNode(D_Node* node, unsigned int distance);
 };
 
 #endif /* defined(__TestinC____D_Node__) */

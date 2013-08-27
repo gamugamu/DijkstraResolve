@@ -11,7 +11,7 @@
 #pragma mark -------------------------- public ---------------------------------
 #pragma mark -------------------------------------------------------------------
 
-void D_Node::addNeighboor(D_Node* node, uint distance_A, uint distance_B){
+void D_Node::addNeighboor(D_Node* node, unsigned int distance_A, unsigned int distance_B){
     this->addNode(node, distance_A);
     node->addNode(this, distance_B);
 }
@@ -37,7 +37,7 @@ void D_Node::description(){
 
 #pragma mark - alloc / dealloc
 
-D_Node::D_Node(uint idNode) : id(idNode), didVisit(0), cantVisit(0){
+D_Node::D_Node(unsigned int idNode) : id(idNode), didVisit(0), cantVisit(0){
 };
 
 D_Node::~D_Node(){
@@ -46,7 +46,7 @@ D_Node::~D_Node(){
 #pragma mark -------------------------- private --------------------------------
 #pragma mark -------------------------------------------------------------------
 
-void D_Node::addNode(D_Node* node, uint distance){
+void D_Node::addNode(D_Node* node, unsigned int distance){
     neighboor.push_back(node);
     neighboorDistance.emplace(node, distance);
 }
