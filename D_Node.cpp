@@ -26,7 +26,7 @@ int D_Node::distanceForNode(const D_Node* node){
 }
 
 void D_Node::description(){
-    printf("--- node %u [%u  || %p]---- [v: %u]\n", id, weight, this, didVisit);
+    printf("--- node %u [%u  || %p]---- [visit: %u | cantVisit: %u]\n", id, weight, this, didVisit, cantVisit);
    
     for(auto    it  = neighboorDistance.begin();
                 it != neighboorDistance.end();
